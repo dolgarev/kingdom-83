@@ -86,15 +86,19 @@ procedure Kingdom is
       loop
          Put ("HOW MANY ACRES DO YOU WISH TO BUY? ");
          Acre_IO.Get (Amount);
-         Price := Bushels (Integer (Amount)) * Land_Price;
-         if Price <= Grain then
-            Land := Land + Amount;
-            Grain := Grain - Price;
-            exit;
+         if Integer (Amount) < 0 then
+            Put_Line ("HAMURABI: WE CANNOT BUY NEGATIVE LAND!");
          else
-            Put ("HAMURABI: THINK AGAIN. YOU HAVE ONLY ");
-            Bush_IO.Put (Grain, 0);
-            Put (" BUSHELS OF GRAIN."); New_Line;
+            Price := Bushels (Integer (Amount)) * Land_Price;
+            if Price <= Grain then
+               Land := Land + Amount;
+               Grain := Grain - Price;
+               exit;
+            else
+               Put ("HAMURABI: THINK AGAIN. YOU HAVE ONLY ");
+               Bush_IO.Put (Grain, 0);
+               Put (" BUSHELS OF GRAIN."); New_Line;
+            end if;
          end if;
       end loop;
    end Buy_Land;
@@ -106,7 +110,9 @@ procedure Kingdom is
       loop
          Put ("HOW MANY ACRES DO YOU WISH TO SELL? ");
          Acre_IO.Get (Amount);
-         if Amount <= Land then
+         if Integer (Amount) < 0 then
+            Put_Line ("HAMURABI: WE CANNOT SELL WHAT WE DO NOT HAVE!");
+         elsif Amount <= Land then
             Land := Land - Amount;
             Grain := Grain + Bushels (Integer (Amount)) * Land_Price;
             exit;
@@ -119,16 +125,23 @@ procedure Kingdom is
    end Sell_Land;
 
    procedure Feed_People is
-      Amount : Bushels;
+      Amount  : Bushels;
+      Starved_Val : Integer;
    begin
       loop
          Put ("HOW MANY BUSHELS DO YOU WISH TO FEED YOUR PEOPLE? ");
          Bush_IO.Get (Amount);
-         if Amount <= Grain then
+         if Amount < 0 then
+            Put_Line ("HAMURABI: WE CANNOT FEED THE PEOPLE NEGATIVE GRAIN!");
+         elsif Amount <= Grain then
             Grain := Grain - Amount;
             -- Each person needs 20 bushels to not starve
-            Starved := Population - People (Integer (Amount) / 20);
-            if Starved < 0 then Starved := 0; end if;
+            Starved_Val := Integer (Population) - Integer (Amount) / 20;
+            if Starved_Val < 0 then
+               Starved := 0;
+            else
+               Starved := People (Starved_Val);
+            end if;
             exit;
          else
             Put ("HAMURABI: THINK AGAIN. YOU HAVE ONLY ");
@@ -145,28 +158,32 @@ procedure Kingdom is
       loop
          Put ("HOW MANY ACRES DO YOU WISH TO PLANT WITH SEED? ");
          Acre_IO.Get (Amount);
-         Needs := Bushels (Integer (Amount) / 2); -- 1 bushel plants 2 acres
-         if Amount > Land then
-            Put ("HAMURABI: THINK AGAIN. YOU OWN ONLY ");
-            Acre_IO.Put (Land, 0);
-            Put (" ACRES."); New_Line;
-         elsif Needs > Grain then
-            Put ("HAMURABI: THINK AGAIN. YOU HAVE ONLY ");
-            Bush_IO.Put (Grain, 0);
-            Put (" BUSHELS OF GRAIN."); New_Line;
-         elsif People (Integer (Amount) / 10) > Population then
-            Put ("HAMURABI: BUT YOU HAVE ONLY ");
-            Peep_IO.Put (Population, 0);
-            Put (" PEOPLE TO TEND THE FIELDS."); New_Line;
+         if Integer (Amount) < 0 then
+            Put_Line ("HAMURABI: WE CANNOT PLANT NEGATIVE SEEDS!");
          else
-            Grain := Grain - Needs;
-            Yield := Random_Range_Bush (1, 5);
-            Rats_Ate := 0;
-            if Random < 0.2 then
-               Rats_Ate := Grain / Bushels (Random_Range (2, 5));
+            Needs := Bushels (Integer (Amount) / 2); -- 1 bushel plants 2 acres
+            if Amount > Land then
+               Put ("HAMURABI: THINK AGAIN. YOU OWN ONLY ");
+               Acre_IO.Put (Land, 0);
+               Put (" ACRES."); New_Line;
+            elsif Needs > Grain then
+               Put ("HAMURABI: THINK AGAIN. YOU HAVE ONLY ");
+               Bush_IO.Put (Grain, 0);
+               Put (" BUSHELS OF GRAIN."); New_Line;
+            elsif People (Integer (Amount) / 10) > Population then
+               Put ("HAMURABI: BUT YOU HAVE ONLY ");
+               Peep_IO.Put (Population, 0);
+               Put (" PEOPLE TO TEND THE FIELDS."); New_Line;
+            else
+               Grain := Grain - Needs;
+               Yield := Random_Range_Bush (1, 5);
+               Rats_Ate := 0;
+               if Random < 0.2 then
+                  Rats_Ate := Grain / Bushels (Random_Range (2, 5));
+               end if;
+               Grain := Grain + Bushels (Integer (Amount)) * Yield - Rats_Ate;
+               exit;
             end if;
-            Grain := Grain + Bushels (Integer (Amount)) * Yield - Rats_Ate;
-            exit;
          end if;
       end loop;
    end Plant_Seeds;

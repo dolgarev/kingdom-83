@@ -1,0 +1,176 @@
+V "GNAT Lib v13"
+M P W=b
+A -gnat83
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_ASPECT_SPECIFICATIONS
+
+U kingdom%b		kingdom_original.adb	1aff2ee6 NE OO SU
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.text_io.generic_aux%s  a-tigeau.adb	a-tigeau.ali
+Z ada.text_io.integer_aux%s
+Z ada.text_io.integer_io%s
+W system%s		system.ads		system.ali
+Z system.img_biu%s	s-imgbiu.adb		s-imgbiu.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.img_llb%s	s-imgllb.adb		s-imgllb.ali
+Z system.img_lli%s	s-imglli.adb		s-imglli.ali
+Z system.img_lllb%s	s-imglllb.ads		s-imglllb.ali
+Z system.img_llli%s	s-imgllli.ads		s-imgllli.ali
+Z system.img_lllw%s	s-imglllw.ads		s-imglllw.ali
+Z system.img_llw%s	s-imgllw.adb		s-imgllw.ali
+Z system.img_wiu%s	s-imgwiu.adb		s-imgwiu.ali
+Z system.val_int%s	s-valint.adb		s-valint.ali
+Z system.val_lli%s	s-vallli.adb		s-vallli.ali
+Z system.val_llli%s	s-valllli.ads		s-valllli.ali
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20240521074738 76789da1 ada%s
+D a-assert.ads		20240521074737 ba465f5c ada.assertions%s
+D a-except.ads		20240521074738 2a7d8d70 ada.exceptions%s
+D a-ioexce.ads		20240521074738 40018c65 ada.io_exceptions%s
+D a-numeri.ads		20240521074738 84bea7a3 ada.numerics%s
+D a-nubinu.ads		20240521074738 93f1f3d1 ada.numerics.big_numbers%s
+D a-nbnbig.ads		20240521074738 711e0174 ada.numerics.big_numbers.big_integers_ghost%s
+D a-stream.ads		20240521074738 119b8fb3 ada.streams%s
+D a-string.ads		20240521074738 90ac6797 ada.strings%s
+D a-sttebu.ads		20240521074738 f1ad67a2 ada.strings.text_buffers%s
+D a-stuten.ads		20240521074738 c6ced0ae ada.strings.utf_encoding%s
+D a-tags.ads		20240521074738 9eaa38c6 ada.tags%s
+D a-textio.ads		20240521074738 5c2c6153 ada.text_io%s
+D a-tigeau.ads		20240521074738 e643cdf3 ada.text_io.generic_aux%s
+D a-tiinau.ads		20240521074738 3ca4fcff ada.text_io.integer_aux%s
+D a-tiinau.adb		20240521074738 199a0c7a ada.text_io.integer_aux%b
+D a-tiinio.ads		20240521074738 e58fa6fb ada.text_io.integer_io%s
+D a-tiinio.adb		20240521074738 b79731f4 ada.text_io.integer_io%b
+D a-unccon.ads		20240521074738 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20240521074738 15f799c2 interfaces%s
+D i-cstrea.ads		20240521074738 e53d8b8e interfaces.c_streams%s
+D kingdom_original.adb	20260217174854 3b4de67e kingdom%b
+D system.ads		20240521074738 426dafb8 system%s
+D s-assert.ads		20240521074738 9c4520c7 system.assertions%s
+D s-casuti.ads		20240521074738 cf13d755 system.case_util%s
+D s-crtl.ads		20240521074738 8a0692f8 system.crtl%s
+D s-exctab.ads		20240521074738 91bef6ef system.exception_table%s
+D s-ficobl.ads		20240521074738 dc5161d4 system.file_control_block%s
+D s-imageb.ads		20240521074738 3953e0e6 system.image_b%s
+D s-imagei.ads		20240521074738 c707dfd0 system.image_i%s
+D s-imagew.ads		20240521074738 9d2dd267 system.image_w%s
+D s-imgbiu.ads		20240521074738 0a8e1c41 system.img_biu%s
+D s-imgint.ads		20240521074738 d4a52a9b system.img_int%s
+D s-imgllb.ads		20240521074738 47d0db9f system.img_llb%s
+D s-imglli.ads		20240521074738 0dc8acc3 system.img_lli%s
+D s-imglllb.ads		20240521074738 30212eed system.img_lllb%s
+D s-imgllli.ads		20240521074738 8322d24d system.img_llli%s
+D s-imglllw.ads		20240521074738 9e2b0560 system.img_lllw%s
+D s-imgllw.ads		20240521074738 bf9c9c15 system.img_llw%s
+D s-imgwiu.ads		20240521074738 912a95f2 system.img_wiu%s
+D s-parame.ads		20240904144414 1f39ba92 system.parameters%s
+D s-putima.ads		20240521074738 17291fe4 system.put_images%s
+D s-secsta.ads		20240521074738 578279f5 system.secondary_stack%s
+D s-soflin.ads		20240521074738 df77073e system.soft_links%s
+D s-stache.ads		20240521074738 0b81c1fe system.stack_checking%s
+D s-stalib.ads		20240521074738 1c9580f6 system.standard_library%s
+D s-stoele.ads		20240521074738 ab5468e4 system.storage_elements%s
+D s-stoele.adb		20240521074738 8f5a9db6 system.storage_elements%b
+D s-traent.ads		20240521074738 c81cbf8c system.traceback_entries%s
+D s-unstyp.ads		20240521074738 fa2a7f59 system.unsigned_types%s
+D s-valint.ads		20240521074738 1f610d7a system.val_int%s
+D s-vallli.ads		20240521074738 b4c16804 system.val_lli%s
+D s-valllli.ads		20240521074738 bf3121bd system.val_llli%s
+D s-vallllu.ads		20240521074738 fcd04714 system.val_lllu%s
+D s-valllu.ads		20240521074738 ca6e26ce system.val_llu%s
+D s-valuns.ads		20240521074738 e8a1f424 system.val_uns%s
+D s-valuti.ads		20240521074738 fcd603d8 system.val_util%s
+D s-valuei.ads		20240521074738 11081e09 system.value_i%s
+D s-vaispe.ads		20240521074738 44130d39 system.value_i_spec%s
+D s-valueu.ads		20240521074738 18770347 system.value_u%s
+D s-vauspe.ads		20240521074738 a67b2f28 system.value_u_spec%s
+D s-wchcon.ads		20240521074738 d9032363 system.wch_con%s
+D s-widlllu.ads		20240521074738 c5dfde5a system.wid_lllu%s
+D s-widllu.ads		20240521074738 a6620b19 system.wid_llu%s
+D s-widuns.ads		20240521074738 866a5800 system.wid_uns%s
+D s-widthu.ads		20240521074738 b32f15e2 system.width_u%s
+D text_io.ads		20240521074738 21b2c898 text_io%s
+G a e
+G c Z b b [kingdom standard 4 11 none]
+X 13 a-textio.ads
+282U14*New_Line 22|55s7 56s50 60s35 65s33 68s64 70s24 72s35 74s26 76s35 76s45
+. 85s35 100s44 122s30 149s41 168s33 172s44 176s53 203s42 204s72 205s72 206s58
+. 238s7 241s33 243s35
+519U14*Put 22|56s7 57s7 58s7 59s7 60s7 63s10 65s10 68s7 69s7 70s7 71s7 72s7
+. 73s7 74s7 75s7 76s7 84s7 85s7 87s10 98s16 100s16 111s10 120s13 122s13 132s10
+. 147s13 149s13 159s10 166s16 168s16 170s16 172s16 174s16 176s16 202s10 203s10
+. 204s10 205s10 206s10 239s7 241s7 242s7 243s7
+566U14*Put_Line 22|90s13 114s13 135s13 162s13 222s4 223s4 244s7 249s7 251s7
+607X4*Data_Error 22|248r9
+X 17 a-tiinio.ads
+46k21*Integer_IO 114e27 22|11r34 12r35 13r35 14r35
+60U14 Get 22|88s18[13] 112s18[13] 133s18[12] 160s18[13]
+83U14 Put 22|57s32[11] 58s27[14] 59s42[14] 64s18[14] 68s43[14] 69s43[13]
+. 71s39[12] 73s34[12] 75s38[12] 84s44[12] 99s24[12] 121s21[13] 148s21[12]
+. 167s24[13] 171s24[12] 175s24[14] 202s40[14] 240s15[14] 242s40[13]
+X 22 kingdom_original.adb
+4U11*Kingdom 4b11 252l5 252t12
+7I9 Bushels<integer> 12r47 19r21 21r21 22r21 23r21 48r60 50r14 81r16 92r22
+. 117r30 128r17 156r16 164r22 182r39 184r33
+8I9 Acres<integer> 13r47 20r21 80r16 107r16 155r16
+9I9 People<integer> 14r47 18r21 24r21 25r21 26r21 27r21 143r27 173r19 201r20
+. 215r21
+11K12 Int_IO[17|46] 57r25
+12K12 Bush_IO[17|46] 71r31 73r26 75r30 84r36 99r16 133r10 148r13 171r16
+13K12 Acre_IO[17|46] 69r35 88r10 112r10 121r13 160r10 167r16 242r32
+14K12 Peep_IO[17|46] 58r19 59r34 64r10 68r35 175r16 202r32 240r7
+17i4 Year{integer} 57r37 207m10 225r10 228r10 233m10 233r18 237r7
+18i4 Population{9I9} 68r48 139r37 173r52 175r29 196r27 197m10 197r24 201r44
+. 212m7 212r21 215r103 217m7 217r21
+19i4 Grain{7I9} 75r43 93r25 95m16 95r25 99r29 117m13 117r22 136r26 137m13
+. 137r22 148r26 169r27 171r29 178m16 178r25 182r31 184m16 184r25 215r83
+20i4 Land{8I9} 69r48 94m16 94r24 109r10 115r26 116m13 116r21 121r26 165r25
+. 167r29 215r66 242r45
+21i4 Yield{7I9} 71r44 179m16 184r62
+22i4 Rats_Ate{7I9} 73r39 180m16 182m19 184r70
+23i4 Land_Price{7I9} 83m7 84r49 92r51 117r59
+24i4 Starved{9I9} 58r32 141m16 143m16 201r10 202r45 211r40 212r34
+25i4 Immigrants{9I9} 59r47 215m7 216r10 216m30 217r34
+26i4 Plague_Deaths{9I9} 62r10 64r23 194m7 196m10 197r37
+27i4 Total_Starved{9I9} 211m7 211r24 240r20
+30i4 Seed{integer} 36m7 36r20 37r10 38m10 38r18 40r21
+31V13 Random{float} 31b13 41l8 41t14 45s29 181s19 195s10
+32i7 M{integer} 36r34 38r25 40r36
+33i7 A{integer} 36r16
+34i7 C{integer} 36r27
+43V13 Random_Range{integer} 43b13 43>27 43>32 46l8 46t20 50s23 182s48 215s29
+43i27 Low{integer} 45r14 45r52
+43i32 High{integer} 45r45
+48V13 Random_Range_Bush{7I9} 48b13 48>32 48>37 51l8 51t25 83s21 179s25
+48i32 Low{integer} 50r37
+48i37 High{integer} 50r42
+53U14 Print_Status 53b14 77l8 77t20 226s7
+79U14 Buy_Land 79b14 104l8 104t16 227s7
+80i7 Amount{8I9} 88m23 89r22 92r40 94r31
+81i7 Price{7I9} 92m13 93r16 95r33
+106U14 Sell_Land 106b14 125l8 125t17 229s10
+107i7 Amount{8I9} 112m23 113r22 115r16 116r28 117r48
+127U14 Feed_People 127b14 152l8 152t19 230s10
+128i7 Amount{7I9} 133m23 134r13 136r16 137r30 139r60
+129i7 Starved_Val{integer} 139m13 140r16 143r35
+154U14 Plant_Seeds 154b14 189l8 189t19 231s10
+155i7 Amount{8I9} 160m23 161r22 164r40 165r16 173r36 184r51
+156i7 Needs{7I9} 164m13 169r19 178r33
+191U14 Process_Events 191b14 219l8 219t22 232s10
+X 67 text_io.ads
+24K9*Text_IO=24:29 22|1w6 2r5 11r26 12r27 13r27 14r27
+
