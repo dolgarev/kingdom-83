@@ -1,6 +1,7 @@
 package Kingdom.Logic with SPARK_Mode => On is
 
    type Bushel_Count is new Long_Integer range -100_000_000 .. 100_000_000;
+   subtype Bus_Count is Bushel_Count;
    type Land_Area    is new Integer range 0 .. 1_000_000;
    type People_Count is new Integer range 0 .. 1_000_000;
    type Year_Number  is new Integer range 1 .. 11;
@@ -49,7 +50,6 @@ package Kingdom.Logic with SPARK_Mode => On is
 
 private
 
-   type Bus_Count is new Bushel_Count; -- Alias for internal use
 
    type Game_State is record
       Year           : Year_Number  := 1;
