@@ -188,6 +188,29 @@ procedure Kingdom is
       end loop;
    end Plant_Seeds;
 
+   procedure Show_Instructions is
+   begin
+      New_Line;
+      Put_Line ("CONGRATULATIONS! YOU ARE THE NEW RULER OF THE ANCIENT");
+      Put_Line ("CITY-STATE OF SUMERIA. YOUR GOAL IS TO RULE FOR 10 YEARS.");
+      Put_Line ("EACH YEAR YOU MUST DECIDE HOW MUCH LAND TO BUY OR SELL,");
+      Put_Line ("HOW MUCH GRAIN TO FEED YOUR PEOPLE, AND HOW MUCH TO PLANT.");
+      New_Line;
+      Put_Line ("1. LAND COSTS 17-26 BUSHELS PER ACRE.");
+      Put_Line ("2. EACH PERSON NEEDS 20 BUSHELS PER YEAR TO SURVIVE.");
+      Put_Line ("3. ONE BUSHEL OF GRAIN PLANTS 2 ACRES OF LAND.");
+      Put_Line ("4. ONE PERSON CAN TEND 10 ACRES OF LAND.");
+      Put_Line ("5. HARVEST YIELD IS 1-5 BUSHELS PER ACRE.");
+      Put_Line ("6. RATS MAY EAT SOME OF YOUR GRAIN.");
+      Put_Line ("7. A PLAGUE MAY STRIKE, KILLING HALF THE POPULATION.");
+      New_Line;
+      Put_Line ("IF MORE THAN 45% OF THE PEOPLE STARVE IN ONE YEAR,");
+      Put_Line ("YOU WILL BE IMPEACHED! GOOD LUCK.");
+      New_Line;
+      Put_Line ("PRESS ENTER TO START THE GAME...");
+      Skip_Line;
+   end Show_Instructions;
+
    procedure Process_Events is
    begin
       -- Plague
@@ -221,6 +244,18 @@ procedure Kingdom is
 begin
    Put_Line ("KINGDOM - THE GAME OF SUMERIA");
    Put_Line ("BASED ON THE CLASSIC HAMURABI");
+   New_Line;
+
+   declare
+      Answer : Character;
+   begin
+      Put ("WISH TO READ THE INSTRUCTIONS? (Y/N) ");
+      Get (Answer);
+      Skip_Line; -- Consume the newline after the character
+      if Answer = 'Y' or Answer = 'y' then
+         Show_Instructions;
+      end if;
+   end;
 
    while Year <= 10 loop
       Print_Status;
