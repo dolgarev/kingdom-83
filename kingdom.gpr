@@ -1,7 +1,0 @@
-aggregate project Kingdom is
-   for Project_Files use (
-      "kingdom_83/kingdom_83.gpr",
-      "kingdom_83_plus/kingdom_83_plus.gpr",
-      "kingdom_modern/kingdom_modern.gpr"
-   );
-end Kingdom;

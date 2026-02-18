@@ -37,7 +37,6 @@ private
       Immigrants     : People;
       Plague_Deaths  : People;
       Total_Starved  : People;
-      Seed           : Integer; -- RNG seed
    end record;
 
 end Kingdom_Logic;

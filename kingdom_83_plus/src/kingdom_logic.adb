@@ -8,7 +8,10 @@ package body Kingdom_Logic is
    package Peep_IO is new Text_IO.Integer_IO (People);
 
    -- Internal Random Number Generator (LCG)
-   function Random (Seed : in out Integer) return Float is
+   -- Package-level seed for Ada 83 compliance (functions cannot have out/in out parameters)
+   Seed : Integer := 12345;
+
+   function Random return Float is
       M : constant Integer := 32768;
       A : constant Integer := 11035;
       C : constant Integer := 12345;
@@ -20,14 +23,14 @@ package body Kingdom_Logic is
       return Float (Seed) / Float (M);
    end Random;
 
-   function Random_Range (Seed : in out Integer; Low, High : Integer) return Integer is
+   function Random_Range (Low, High : Integer) return Integer is
    begin
-      return Low + Integer (Random (Seed) * Float (High - Low + 1) - 0.5);
+      return Low + Integer (Random * Float (High - Low + 1) - 0.5);
    end Random_Range;
 
-   function Random_Range_Bush (Seed : in out Integer; Low, High : Integer) return Bushels is
+   function Random_Range_Bush (Low, High : Integer) return Bushels is
    begin
-      return Bushels (Random_Range (Seed, Low, High));
+      return Bushels (Random_Range (Low, High));
    end Random_Range_Bush;
 
    procedure Initialize (State : in out Game_State) is
@@ -43,7 +46,7 @@ package body Kingdom_Logic is
       State.Immigrants     := 5;
       State.Plague_Deaths  := 0;
       State.Total_Starved  := 0;
-      State.Seed           := 12345;
+      Seed                 := 12345;
    end Initialize;
 
    procedure Show_Status (State : in Game_State) is
@@ -78,7 +81,7 @@ package body Kingdom_Logic is
       Amount : Acres;
       Price  : Bushels;
    begin
-      State.Land_Price := Random_Range_Bush (State.Seed, 17, 26);
+      State.Land_Price := Random_Range_Bush (17, 26);
       Put ("LAND IS SELLING AT "); Bush_IO.Put (State.Land_Price, 0);
       Put (" BUSHELS PER ACRE."); New_Line;
       loop
@@ -160,10 +163,10 @@ package body Kingdom_Logic is
             Put (" PEOPLE TO TEND THE FIELDS."); New_Line;
          else
             State.Grain := State.Grain - Needs;
-            State.Yield := Random_Range_Bush (State.Seed, 1, 5);
+            State.Yield := Random_Range_Bush (1, 5);
             State.Rats_Ate := 0;
-            if Random (State.Seed) < 0.2 then
-               State.Rats_Ate := State.Grain / Bushels (Random_Range (State.Seed, 2, 5));
+            if Random < 0.2 then
+               State.Rats_Ate := State.Grain / Bushels (Random_Range (2, 5));
             end if;
             State.Grain := State.Grain + Bushels (Integer (Amount)) * State.Yield - State.Rats_Ate;
             exit;
@@ -176,7 +179,7 @@ package body Kingdom_Logic is
    begin
       -- Plague
       State.Plague_Deaths := 0;
-      if Random (State.Seed) < 0.15 then
+      if Random < 0.15 then
          State.Plague_Deaths := State.Population / 2;
          State.Population := State.Population - State.Plague_Deaths;
       end if;
@@ -196,7 +199,7 @@ package body Kingdom_Logic is
       State.Population := State.Population - State.Starved;
 
       -- Immigration
-      State.Immigrants := People (Random_Range (State.Seed, 1, 5) * 
+      State.Immigrants := People (Random_Range (1, 5) * 
                           (20 * Integer (State.Land) + Integer (State.Grain)) / 
                           (Integer (State.Population) * 100 + 1));
       if State.Immigrants < 0 then State.Immigrants := 0; end if;

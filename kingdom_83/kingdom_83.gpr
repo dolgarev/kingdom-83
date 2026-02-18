@@ -5,6 +5,6 @@ project Kingdom_83 is
    for Main use ("kingdom_original.adb");
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-gnat2022", "-gnatwa");
+      for Default_Switches ("Ada") use ("-gnat83", "-gnatwa");
    end Compiler;
 end Kingdom_83;

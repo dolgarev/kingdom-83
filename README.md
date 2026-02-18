@@ -10,9 +10,7 @@ This project is a faithful implementation of the Sumerian city management simula
 
 - **Strict Ada 83 Compatibility**: The source code follows the Ada 83 standard, using period-accurate syntax and library structures.
 - **Custom RNG**: Since the Ada 83 standard didn't include a standard library for random number generation, this version implements a custom **Linear Congruential Generator (LCG)**.
-- **Modular Design**: The project is split into a main entry point and a logic package to demonstrate proper Ada encapsulation:
-  - `kingdom.adb`: Main program loop and user interaction.
-  - `kingdom_logic.ads / .adb`: Core game logic, state management, and RNG implementation.
+- **Modular Design**: The project is split into separate modules to demonstrate proper Ada encapsulation across different directories.
 - **Classic Gameplay**: Includes all the original mechanics:
   - Land trade (buying/selling).
   - Population management (feeding/starvation/immigration).
@@ -21,34 +19,43 @@ This project is a faithful implementation of the Sumerian city management simula
 
 ## Project Structure
 
-The project is organized into several directories to showcase different implementation styles:
-
-### Root Directory
-The root directory contains the primary modular implementation in Ada 83 style.
-- `kingdom.adb`: Main program entry point.
-- `kingdom_logic.ads / .adb`: Modular game logic and state management.
-
-### [kingdom_83/](file:///home/oleg/dev/repositories/github.com/dolgarev/kingdom/kingdom_83)
+### [kingdom_83/](./kingdom_83)
 Contains the original single-file implementation.
 - `kingdom_original.adb`: A standalone Ada 83 version, ideal for compilers that prefer a single-source file without complex package dependencies.
 
-### [kingdom_modern/](file:///home/oleg/dev/repositories/github.com/dolgarev/kingdom/kingdom_modern)
+### [kingdom_83_plus/](./kingdom_83_plus)
+Contains a modular implementation in Ada 83 style.
+- `kingdom.adb`: Main program loop and user interaction.
+- `kingdom_logic.ads / .adb`: Core game logic, state management, and RNG implementation.
+
+### [kingdom_modern/](./kingdom_modern)
 Contains a version of the game utilizing more modern Ada conventions and GNAT-style naming.
 - `kingdom-main.adb`: Entry point for the modern version.
 - `kingdom-logic.ads / .adb`: Modern implementation of the core logic.
 
-## Building and Running
+### Using GPRbuild (Recommended)
 
-To compile the project using the GNAT compiler:
+To compile any of the versions, navigate to its directory and use `gprbuild`:
 
 ```bash
-gnatmake kingdom.adb
+# Example for the modern version
+cd kingdom_modern
+gprbuild -P kingdom_modern.gpr
 ```
 
-To run the game:
+### Manual Compilation with GNAT
+
+Alternatively, you can use `gnatmake` within the `src` directories:
 
 ```bash
-./kingdom
+cd kingdom_83/src
+gnatmake kingdom_original.adb
+```
+
+To run the game after building with `gprbuild`:
+
+```bash
+./dest/kingdom-main
 ```
 
 ## Historical Context
